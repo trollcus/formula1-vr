@@ -98,7 +98,7 @@ var soundHover = new Audio('media/sounds/navigation_hover-tap.wav');
 var smallTap = new Audio('media/sounds/navigation_forward-selection-minimal.wav');
 var smallTapBack = new Audio('media/sounds/navigation_backward-selection-minimal.wav');
 var smallTapConfirm = new Audio('media/sounds/navigation_forward-selection.wav');
-
+var cameraBool = false;
 
 
 main.addEventListener('click', function() {
@@ -305,6 +305,7 @@ hideBtn.addEventListener('click', function() {
     infoTemplate.setAttribute('visible', 'true');
     eventListenersNavigation();
     console.log('removed');
+    zoomScreens();
   } else {
     if(onBoardBtn.classList.contains("onboardActive") || dataBtn.classList.contains("dataActive")){
       onBoardBtn.classList.remove("onboardActive");
@@ -327,6 +328,8 @@ hideBtn.addEventListener('click', function() {
 
     leaderboardTemplate.setAttribute('visible', 'false');
     infoTemplate.setAttribute('visible', 'false');
+    // zoom on screens
+    zoomScreens();
 
 
 
@@ -351,13 +354,16 @@ dataBtn.addEventListener('click', function() {
     eventListenersNavigation();
     console.log('removed');
   } else {
-    if(onBoardBtn.classList.contains("onboardActive") || hideBtn.classList.contains("hideActive")){
+    if(onBoardBtn.classList.contains("onboardActive")){
       onBoardBtn.classList.remove("onboardActive");
       onBoardBtn.setAttribute('color', '#1A181C');
+    }
+    if (hideBtn.classList.contains("hideActive")) {
       hideBtn.classList.remove("onboardActive");
       hideBtn.setAttribute('color', '#1A181C');
       eventListenersNavigation();
       console.log('removed');
+      zoomScreens();
     }
     smallTap.play();
     dataBtn.classList.add("dataActive");
@@ -394,13 +400,18 @@ onBoardBtn.addEventListener('click', function() {
     eventListenersNavigation();
     console.log('removed');
   } else {
-    if(dataBtn.classList.contains("dataActive") || hideBtn.classList.contains("hideActive")) {
-      hideBtn.classList.remove("onboardActive");
-      hideBtn.setAttribute('color', '#1A181C');
+    if(dataBtn.classList.contains("dataActive")) {
       dataBtn.classList.remove("dataActive");
       dataBtn.setAttribute('color', '#1A181C');
       eventListenersNavigation();
       console.log('removed');
+    }
+    if(hideBtn.classList.contains("hideActive")) {
+      hideBtn.classList.remove("onboardActive");
+      hideBtn.setAttribute('color', '#1A181C');
+      eventListenersNavigation();
+      console.log('removed');
+      zoomScreens();
     }
     smallTap.play();
     onBoardBtn.classList.add("onboardActive");
@@ -456,13 +467,35 @@ function startWorld(){
   // startBtn.setAttribute('visible', false);
   // startScreen.setAttribute('visible', false);
 
-  vid.play();
-  vid.volume = 0.3;
+  // vid.play();
+  // vid.volume = 0.3;
 }
-// startWorld();
+startWorld();
 startBtn.addEventListener('click', function(){
   startWorld();
 });
+
+
+function zoomScreens(){
+  var rig = document.querySelector('#rig');
+  var gearVr = document.querySelector('#gearVr');
+  var nav = document.querySelector('#navigation');
+  var cameraElements = [rig, gearVr, nav];
+  if (cameraBool == false){
+    cameraElements.forEach(function(el){
+      el.object3D.position.z -= 1;
+      cameraBool = true;
+      // console.log('zooming in');
+    });
+  } else {
+    cameraElements.forEach(function(el){
+      el.object3D.position.z += 1;
+      cameraBool = false;
+      // console.log('zooming out');
+    });
+
+  }
+}
 
 
 function leaderboard() {

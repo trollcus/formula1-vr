@@ -69,7 +69,7 @@
        animation__2="property: position; from: -8 1.511 -4.000; to: 0 1.511 -4.000; dur: 800; easing: easeInOutQuad;"
       position="0 1.511 -4.000" rotation="0 0 0" width="16" height="9" material="src:#myvideo" video-handler></a-plane> -->
       <!-- Navigation -->
-      <a-plane id="navigation" text="value: ; color: #FFFFFF; opacity: 1; align: left; xOffset: 3.15;" position="0 4 3" width="3.75" color="#D493DD" material="opacity: 0;" geometry="height: 0.8" rotation="-18.960 0">
+      <a-plane id="navigation" text="value: ; color: #FFFFFF; opacity: 1; align: left; xOffset: 3.15;" position="0 4 6.5" width="3.75" color="#D493DD" material="opacity: 0;" geometry="height: 0.8" rotation="-18.960 0">
         <a-plane id="onboard-control" text="value: Onboard" geometry="height: 0.8; width: 1" color="#1A181C" position="-1 0 0.01"
 
         >
@@ -147,7 +147,7 @@
      </a-entity>
      <a-sky color="#222223"></a-sky>
      <!-- <a-entity id="rig" position="0 4.5 4.5" camera> -->
-     <a-entity id="rig" position="0 4.5 5.5" camera>
+     <a-entity id="rig" position="0 4.5 9.5" camera>
       <a-camera id="camera">
         <!-- <a-entity id="gear-laser" position="0 -0.3 -1.4" laser-controls raycaster="showLine:true;" line="color:#eee; opacity:0.33;"></a-entity> -->
         <!-- <a-entity id="gear" position="0 -0.2 -1" gearvr-controls="hand: right"></a-entity> -->
@@ -170,7 +170,7 @@
       </a-camera>
     </a-entity>
     <!-- Korrekt kontroll -->
-    <a-entity position="-0.1 4.8 5.3">
+    <a-entity id="gearVr" position="-0.1 4.8 9.3">
       <a-entity id="gear-laser" laser-controls raycaster="showLine:true;" line="color:#eee; opacity:0.33;">
         <a-plane id="onBoardPreview" visible="false" material="shader: flat" position="0.5 0 -3" src="" geometry="depth: 0.01" scale="0.6 0.38 1"></a-plane>
       </a-entity>
