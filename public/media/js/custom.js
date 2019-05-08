@@ -99,6 +99,12 @@ var smallTap = new Audio('media/sounds/navigation_forward-selection-minimal.wav'
 var smallTapBack = new Audio('media/sounds/navigation_backward-selection-minimal.wav');
 var smallTapConfirm = new Audio('media/sounds/navigation_forward-selection.wav');
 var cameraBool = false;
+var hoverStateOnboard = false;
+var screenState = {
+  'mainScreen': '',
+  'firstScreen': '',
+  'secondScreen': ''
+};
 
 
 main.addEventListener('click', function() {
@@ -119,6 +125,8 @@ main.addEventListener('click', function() {
 //   var vid = document.querySelector("#firstpov");
 //   vid.play();
 // });
+
+
 
 
 // Onboard Navigation
@@ -475,7 +483,7 @@ startBtn.addEventListener('click', function(){
   startWorld();
 });
 
-
+// For the zooming of the camera when disabling UI
 function zoomScreens(){
   var rig = document.querySelector('#rig');
   var gearVr = document.querySelector('#gearVr');
@@ -483,19 +491,45 @@ function zoomScreens(){
   var cameraElements = [rig, gearVr, nav];
   if (cameraBool == false){
     cameraElements.forEach(function(el){
-      el.object3D.position.z -= 2;
+      el.object3D.position.z -= 2.5;
+      nav.object3D.position.y -= 0.15;
       cameraBool = true;
       // console.log('zooming in');
     });
   } else {
     cameraElements.forEach(function(el){
-      el.object3D.position.z += 2;
+      el.object3D.position.z += 2.5;
+      nav.object3D.position.y += 0.15;
       cameraBool = false;
       // console.log('zooming out');
     });
 
   }
 }
+
+function dataModeScreens(){
+  screens.forEach(function(screen){
+    screen.addEventListener('click', function(){
+      if(dataBtn.classList.contains("dataActive")) {
+        console.log(screen.id);
+        switch(screen.id){
+          case 'vid':
+            console.log(screenState.mainScreen);
+            break;
+          case 'firstScreen':
+            console.log(screenState.firstScreen);
+            break;
+          case 'secondScreen':
+            console.log(screenState.secondScreen);
+            break;
+        }
+      }
+    })
+  });
+}
+dataModeScreens();
+
+
 
 
 function leaderboard() {
@@ -552,6 +586,21 @@ function leaderboard() {
       // Bild ersätter inte den som ligger ovanpå. Fixa bort dubletter bara
       // imageholder.setAttribute('opacity', '1');
 
+      function hoverScreen(screen, eventHappening) {
+        if(hoverStateOnboard == true) {
+          if(eventHappening == 'mouseenter') {
+            screen.object3D.scale.set(1.1, 1.1, 1);
+            console.log('hovering a screen while choosing');
+          } else {
+            screen.object3D.scale.set(1, 1, 1);
+            console.log('leaving a screen while choosing');
+          }
+        }
+
+        // el.object3D.position.z += 2.5;
+
+      }
+
       // main
       // replay1
       // replay2
@@ -560,6 +609,7 @@ function leaderboard() {
           // console.log(screen.id);
           // console.log('clicked ' + screen + 'screen after clicking on driver ' + driver.target.id);
           // screen.setAttribute('material', 'src:#' + driver.target.abbreviation + '-onboard');
+
 
           driverID = driver.target.id;
           driverID = driverID.split('-').join(' ');
@@ -577,7 +627,7 @@ function leaderboard() {
                   var screenImage = document.querySelector('#' + driverInfo.abbreviation + '-onboard-main');
                   screenImageTemplate.setAttribute('visible', 'true');
                   screenImage.setAttribute('visible', 'true');
-
+                  screenState.mainScreen = driverInfo.name;
                   break;
                 case 'firstScreen':
                   // console.log('the firstScreen screen has been clicked');
@@ -588,6 +638,7 @@ function leaderboard() {
                   firstScreenInfo.setAttribute('visible', 'true');
                   firstScreenInfo.setAttribute('color', driverInfo.color);
                   firstScreenInfo.setAttribute('text', 'value: ' + driverInfo.name + ';');
+                  screenState.firstScreen = driverInfo.name;
                   break;
                 case 'secondScreen':
                   // console.log('the secondScreen screen has been clicked');
@@ -598,6 +649,7 @@ function leaderboard() {
                   secondScreenInfo.setAttribute('visible', 'true');
                   secondScreenInfo.setAttribute('color', driverInfo.color);
                   secondScreenInfo.setAttribute('text', 'value: ' + driverInfo.name + ';');
+                  screenState.secondScreen = driverInfo.name;
                   break;
                 default:
                   console.log('asad');
@@ -607,7 +659,14 @@ function leaderboard() {
             }
           });
         }
-        screen.removeEventListener('click', onboardScreen);
+        hoverStateOnboard = false;
+        screens.forEach(function(screen){
+          screen.removeEventListener('click', onboardScreen, true);
+          screen.object3D.scale.set(1, 1, 1);
+          // screen.removeEventListener('mouseenter', hoverScreen, true);
+          // screen.removeEventListener('mouseleave', hoverScreen, true);
+          console.log('removing event listeners');
+        });
       }
 
       if(onBoardBtn.classList.contains("onboardActive")) {
@@ -623,6 +682,14 @@ function leaderboard() {
         screens.forEach(function(screen){
           screen.addEventListener('click', function(){
             onboardScreen(screen);
+          });
+          // hover
+          hoverStateOnboard = true;
+          screen.addEventListener('mouseenter', function(){
+            hoverScreen(screen, 'mouseenter');
+          });
+          screen.addEventListener('mouseleave', function(){
+            hoverScreen(screen, 'mouseleave');
           });
         });
       }
