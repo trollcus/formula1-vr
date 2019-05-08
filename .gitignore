@@ -6,3 +6,9 @@ _prod/
 data/*
 node_modules/
 npm-debug*.log*
+_material/
+_prod/media/img/drivers/
+_prod/media/img/general/
+_prod/media/img/replays/
+_prod/media/img/teams/
+_prod/media/vid/

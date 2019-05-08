@@ -24,6 +24,8 @@
     "postinstall": "npm run sync"
   },
   "dependencies": {
+    "aframe-html-shader": "^0.2.0",
+    "aframe-text-geometry-component": "^0.5.1",
     "cheerio": "^1.0.0-rc.2",
     "marky-markdown": "^12.0.0",
     "nunjucks-cli": "github:cvan/nunjucks-cli#214cea4",

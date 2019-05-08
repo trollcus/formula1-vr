@@ -1,3 +1,5 @@
+require('aframe-text-geometry-component');
+require ('aframe-html-shader');
 /* global ga, performance, YT */
 (function () {
   // Toggle this variable to output to the console debug GA messages.
