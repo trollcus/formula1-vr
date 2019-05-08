@@ -104,12 +104,17 @@
       <a-plane id="vid" position="0 4.5 -4.000" rotation="0 0 0" width="16" height="9" material="src:#generalpov" video-handler></a-plane>
       <a-plane id="firstScreen" src="#image-logo" text="value: ; color: #000000; opacity: 1; align: left; xOffset: 3.15;" position="-4.113 11.137 -3.88321" width="7.75" color="#EEEEEE" material="opacity: 1;" geometry="height: 3.95" rotation="2.75 0"
       >
-      <a-plane id="firstScreenInfo" visible="false" text="value: ; color: #FFFFFF; baseline: top; xOffset: 0.15; yOffset: 2" position="0 2.48612 -0.1954" width="7.75" material="" geometry="height: 1.03" rotation="2.75 0"></a-plane>
-
+        <a-plane id="firstScreenInfo" visible="false" text="value: ; color: #000000; baseline: top; xOffset: 1.8; yOffset: 2; width: 11;" position="0 2.55 -0.1954" width="7.75" material="" geometry="height: 1.03" rotation="2.75 0"></a-plane>
+        <a-plane visible="false" id="firstScreenData" color="#469BFF" text="value: ; color: #000000; opacity: 1; align: center; xOffset: 1.40; width: 13;" position="0 0 0.11" width="7.75" color="#EEEEEE" material="opacity: 0.65;" geometry="height: 3.95" rotation="2.75 0">
+          <a-plane id="firstScreenDataImg" text="value: ; color: #000000; opacity: 1; align: left; " position="-2.419 0 0.11" width="2.9" color="#EEEEEE" material="opacity: 0.65;" geometry="height: 3.95" rotation="2.75 0"></a-plane>
+        </a-plane>
       </a-plane>
       <a-plane id="secondScreen" src="#image-logo" text="value: ; color: #000000; opacity: 1" position="4.124 11.137 -3.88321" width="7.75" color="#EEEEEE" geometry="height: 3.95" rotation="2.75 0"
       >
-        <a-plane id="secondScreenInfo" visible="false" text="value: ; color: #FFFFFF; baseline: top; xOffset: 0.15; yOffset: 2" position="0 2.48612 -0.1954" width="7.75" material="" geometry="height: 1.03" rotation="2.75 0"></a-plane>
+        <a-plane id="secondScreenInfo" visible="false" text="value: ; color: #000000; baseline: top; xOffset: 1.8; yOffset: 2; width: 11;" position="0 2.55 -0.1954" width="7.75" material="" geometry="height: 1.03" rotation="2.75 0"></a-plane>
+        <a-plane visible="false" id="secondScreenData" color="#469BFF" text="value: ; color: #000000; opacity: 1; align: center; xOffset: 1.40; width: 13;" position="0 0 0.11" width="7.75" color="#EEEEEE" material="opacity: 0.65;" geometry="height: 3.95" rotation="2.75 0">
+          <a-plane id="secondScreenDataImg" text="value: ; color: #000000; opacity: 1; align: left; " position="-2.419 0 0.11" width="2.9" color="#EEEEEE" material="opacity: 0.65;" geometry="height: 3.95" rotation="2.75 0"></a-plane>
+        </a-plane>
       </a-plane>
 
       <a-entity id="template-infoscreen" position="8.190 6.581 0.414" rotation="0 270 0">

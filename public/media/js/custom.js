@@ -318,6 +318,8 @@ hideBtn.addEventListener('click', function() {
     if(onBoardBtn.classList.contains("onboardActive") || dataBtn.classList.contains("dataActive")){
       onBoardBtn.classList.remove("onboardActive");
       dataBtn.classList.remove("dataActive");
+      document.querySelector('#firstScreenData').setAttribute('visible', 'false');
+      document.querySelector('#secondScreenData').setAttribute('visible', 'false');
       onBoardBtn.setAttribute('color', '#1A181C');
       dataBtn.setAttribute('color', '#1A181C');
 
@@ -350,6 +352,8 @@ dataBtn.addEventListener('click', function() {
   if(dataBtn.classList.contains("dataActive")) {
     smallTapBack.play();
     dataBtn.classList.remove("dataActive");
+    document.querySelector('#firstScreenData').setAttribute('visible', 'false');
+    document.querySelector('#secondScreenData').setAttribute('visible', 'false');
     dataBtn.setAttribute('color', '#1A181C');
     drivers.forEach(function(driver) {
       var id = driver.abbreviation + '-onboard-template';
@@ -365,6 +369,7 @@ dataBtn.addEventListener('click', function() {
     if(onBoardBtn.classList.contains("onboardActive")){
       onBoardBtn.classList.remove("onboardActive");
       onBoardBtn.setAttribute('color', '#1A181C');
+
     }
     if (hideBtn.classList.contains("hideActive")) {
       hideBtn.classList.remove("onboardActive");
@@ -410,6 +415,8 @@ onBoardBtn.addEventListener('click', function() {
   } else {
     if(dataBtn.classList.contains("dataActive")) {
       dataBtn.classList.remove("dataActive");
+      document.querySelector('#firstScreenData').setAttribute('visible', 'false');
+      document.querySelector('#secondScreenData').setAttribute('visible', 'false');
       dataBtn.setAttribute('color', '#1A181C');
       eventListenersNavigation();
       console.log('removed');
@@ -506,7 +513,8 @@ function zoomScreens(){
 
   }
 }
-
+var dataScreen;
+var dataScreenImg;
 function dataModeScreens(){
   screens.forEach(function(screen){
     screen.addEventListener('click', function(){
@@ -515,12 +523,40 @@ function dataModeScreens(){
         switch(screen.id){
           case 'vid':
             console.log(screenState.mainScreen);
+            if(screenState.mainScreen) {
+
+            }
             break;
           case 'firstScreen':
             console.log(screenState.firstScreen);
+            if(screenState.firstScreen) {
+              dataScreen = document.querySelector('#firstScreenData');
+              dataScreenImg = document.querySelector('#firstScreenDataImg');
+              drivers.forEach(function(driverInfo) {
+                  if(screenState.firstScreen == driverInfo.name){
+                    dataScreen.setAttribute('visible', 'true');
+                    dataScreen.setAttribute('color', driverInfo.color);
+                    dataScreenImg.setAttribute('material', 'src:#image-' + driverInfo.abbreviation.toLowerCase());
+                    dataScreen.setAttribute('text', 'value: To car in front \n  0,734s \n\n Last timed lap \n  1.20.345');
+                }
+              });
+
+            }
             break;
           case 'secondScreen':
             console.log(screenState.secondScreen);
+            if(screenState.secondScreen) {
+              dataScreen = document.querySelector('#secondScreenData');
+              dataScreenImg = document.querySelector('#secondScreenDataImg');
+              drivers.forEach(function(driverInfo) {
+                  if(screenState.secondScreen == driverInfo.name){
+                    dataScreen.setAttribute('visible', 'true');
+                    dataScreen.setAttribute('color', driverInfo.color);
+                    dataScreenImg.setAttribute('material', 'src:#image-' + driverInfo.abbreviation.toLowerCase());
+                    dataScreen.setAttribute('text', 'value: To car in front \n  0,734s \n\n Last timed lap \n  1.20.345');
+                }
+              });
+            }
             break;
         }
       }
