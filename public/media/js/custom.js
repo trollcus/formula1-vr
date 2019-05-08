@@ -483,13 +483,13 @@ function zoomScreens(){
   var cameraElements = [rig, gearVr, nav];
   if (cameraBool == false){
     cameraElements.forEach(function(el){
-      el.object3D.position.z -= 1;
+      el.object3D.position.z -= 2;
       cameraBool = true;
       // console.log('zooming in');
     });
   } else {
     cameraElements.forEach(function(el){
-      el.object3D.position.z += 1;
+      el.object3D.position.z += 2;
       cameraBool = false;
       // console.log('zooming out');
     });
