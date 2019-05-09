@@ -482,8 +482,8 @@ function startWorld(){
   // startBtn.setAttribute('visible', false);
   // startScreen.setAttribute('visible', false);
 
-  // vid.play();
-  // vid.volume = 0.3;
+  vid.play();
+  vid.volume = 0.3;
 }
 // startWorld();
 startBtn.addEventListener('click', function(){
