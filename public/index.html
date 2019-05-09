@@ -158,7 +158,7 @@
         <!-- <a-entity id="gear-laser" position="0 -0.3 -1.4" laser-controls raycaster="showLine:true;" line="color:#eee; opacity:0.33;"></a-entity> -->
         <!-- <a-entity id="gear" position="0 -0.2 -1" gearvr-controls="hand: right"></a-entity> -->
 
-        <a-plane id="onBoardPreview" visible="false" material="shader: flat" position="0.5 0 -3" src="" geometry="depth: 0.01" scale="0.6 0.38 1"></a-plane>
+        <!-- <a-plane id="onBoardPreview" visible="false" material="shader: flat" position="0.5 0 -3" src="" geometry="depth: 0.01" scale="0.6 0.38 1"></a-plane>
 
         <a-entity cursor="fuse: false;"
             position="0 0 -1"
@@ -170,21 +170,21 @@
             animation__mouseup="property: scale; startEvents: mouseup; easing: easeInCubic; dur: 100; to: 1 1 1"
             >
 
-        </a-entity>
+        </a-entity> -->
 
 
       </a-camera>
     </a-entity>
     <!-- Korrekt kontroll -->
     <a-entity id="gearVr" position="-0.1 4.8 9.3">
-      <!-- <a-entity id="gear-laser" laser-controls raycaster="showLine:true;" line="color:#eee; opacity:0.33;">
+      <a-entity id="gear-laser" laser-controls raycaster="showLine:true;" line="color:#eee; opacity:0.33;">
         <a-plane id="onBoardPreview" visible="false" material="shader: flat" position="0.5 0 -3" src="" geometry="depth: 0.01" scale="0.6 0.38 1"></a-plane>
-      </a-entity> -->
+      </a-entity>
     </a-entity>
 
     <!-- <a-entity id="gear" position="0 5.878 3.9" gearvr-controls="hand: right"></a-entity> -->
     <a-cylinder id="logo" src="#image-logo-alpha" transparent="true" height="10" position="0 5 8" material="side: double" geometry="openEnded: true; thetaLength: 120.000; thetaStart: 300.000; radius: 8.750"></a-cylinder>
-    <a-cylinder id="startScreen" color="#1A181C" height="10" position="0 5 12.81968" material="side: double" geometry="openEnded: true; thetaLength: 120; thetaStart: 120; radius: 8.75">
+    <a-cylinder id="startScreen" color="#1A181C" height="10" position="0 5 16" material="side: double" geometry="openEnded: true; thetaLength: 120; thetaStart: 120; radius: 8.75">
       <a-cylinder id="startScreenBtn" src="#image-start-graphics" transparent="true" height="10" position="0 1.020 0.01" material="side: double" geometry="height: 1.58; openEnded: true; thetaLength: 18; thetaStart: 172; radius: 8.75"></a-cylinder>
     </a-cylinder>
    </a-scene>

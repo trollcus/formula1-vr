@@ -485,7 +485,7 @@ function startWorld(){
   // vid.play();
   // vid.volume = 0.3;
 }
-startWorld();
+// startWorld();
 startBtn.addEventListener('click', function(){
   startWorld();
 });
